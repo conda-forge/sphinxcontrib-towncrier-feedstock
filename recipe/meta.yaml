@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sphinxcontrib-towncrier-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sphinxcontrib-towncrier-{{ version }}.tar.gz
   sha256: d9b1513fc07781432dd3a0b2ca797cfe0e99e9b5bc5e5c8bf112d5d142afb6dc
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools >=40.6.0
     - setuptools-scm >=3.5
     - setuptools_scm_git_archive >=1.1
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - sphinx
     - towncrier >=19.2
 
@@ -33,6 +33,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/sphinx-contrib/sphinxcontrib-towncrier
