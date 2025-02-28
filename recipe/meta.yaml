@@ -1,17 +1,17 @@
 {% set name = "sphinxcontrib-towncrier" %}
-{% set version = "0.4.0a0" %}
+{% set version = "0.5.0a0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sphinxcontrib-towncrier-{{ version }}.tar.gz
-  sha256: d9b1513fc07781432dd3a0b2ca797cfe0e99e9b5bc5e5c8bf112d5d142afb6dc
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 294e69df6e275e7a86df7ea6a927cc7c28c2c370a884cd5c45de6ec989858f27
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
